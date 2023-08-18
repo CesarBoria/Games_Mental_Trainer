@@ -17,23 +17,36 @@ I am gonna need to follow the next steps:
 
 def create_list(string: str) -> list:
     """This function receives a string of numbers and returns a list of them."""
-    pass
+    return string.split()
 
 
 def weight_convertor(weight: str) -> int:
     """This function receives an input of weight and returns the conversion to the sum of its digits."""
-    pass
+    result = 0
+    for digit in weight:
+        result += int(digit)
+    return result
 
 
 def weightS_convertor(l: list) -> list:
     """This function applies the conversion to a list of values."""
+    return [weight_convertor(old_weight) for old_weight in l]
 
 
 def order_list(sorter: list, be_sorted: list) -> list:
     """This function returns a list sorted based on another list."""
-    pass
+    return [sorted_weights for _, sorted_weights in sorted(zip(sorter, be_sorted))]
 
 
 def back_to_string(l: list) -> str:
-    """This function receives a list of numbers and returns a string of them."""
-    pass
+    """This function receives a list of string of numbers and returns a string of them."""
+    l = list(map(str, l))
+    return " ".join(l)
+
+
+if __name__ == "__main__":
+    print(create_list("3"))
+    print(weight_convertor("123"))
+    print(weightS_convertor(["32", "12", "22"]))
+    print(order_list([32, 12, 22], [3, 2, 1]))
+    print(back_to_string([32, 12, 22]))
