@@ -44,9 +44,20 @@ def back_to_string(l: list) -> str:
     return " ".join(l)
 
 
+def order_weight(strng):
+    """This function makes all the steps."""
+    li = create_list(strng)
+    li_new = weightS_convertor(li)
+    li_ordered = order_list(li_new, li)
+    result = back_to_string(li_ordered)
+    return result
+
+
 if __name__ == "__main__":
-    print(create_list("3"))
-    print(weight_convertor("123"))
-    print(weightS_convertor(["32", "12", "22"]))
-    print(order_list([32, 12, 22], [3, 2, 1]))
-    print(back_to_string([32, 12, 22]))
+    # print(create_list("3"))
+    # print(weight_convertor("123"))
+    # print(weightS_convertor(["32", "12", "22"]))
+    # print(order_list([32, 12, 22], [3, 2, 1]))
+    # print(back_to_string([32, 12, 22]))
+    print(order_weight(a) == b)
+    print(order_weight(c) == d)
