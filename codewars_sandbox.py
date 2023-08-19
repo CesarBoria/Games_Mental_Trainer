@@ -52,6 +52,16 @@ def order_weight(strng):
     result = back_to_string(li_ordered)
     return result
 
+# Another way of doing it, taking advantage of functional programming
+from functools import reduce
+
+def funcion(string):
+  datos = [numero for numero in string.split()]
+  sumas = [reduce(lambda n1, n2: int(n1) + int(n2), digitos) for digitos in datos]
+  datos = dict(zip(sumas, datos))
+  return " ".join((datos[dato] for dato in sorted(datos)))
+
+
 
 if __name__ == "__main__":
     # print(create_list("3"))
