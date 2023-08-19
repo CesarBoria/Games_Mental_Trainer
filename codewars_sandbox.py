@@ -52,6 +52,26 @@ def order_weight(strng):
     result = back_to_string(li_ordered)
     return result
 
+# Another way of doing it, taking advantage of functional programming
+from functools import reduce
+
+def order_weight(string: str) -> str:
+    """Orders a string of int according to their digits
+
+    Args:
+        string: str composed of int separated by blank space
+
+    Returns:
+       same string, with int ordered according to the sum of their digits
+
+    """
+    def digit_sum(number: str) -> int:  # Aux function for the sorting, calculates the sum of digits
+        return sum(int(digit) for digit in number)
+
+    datos = sorted(string.split(), key=lambda num: (digit_sum(num), num))
+    return " ".join(datos)  # String conversion for the list created
+
+
 
 if __name__ == "__main__":
     # print(create_list("3"))
