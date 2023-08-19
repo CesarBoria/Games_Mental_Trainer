@@ -55,11 +55,21 @@ def order_weight(strng):
 # Another way of doing it, taking advantage of functional programming
 from functools import reduce
 
-def funcion(string):
-  datos = [numero for numero in string.split()]
-  sumas = [reduce(lambda n1, n2: int(n1) + int(n2), digitos) for digitos in datos]
-  datos = dict(zip(sumas, datos))
-  return " ".join((datos[dato] for dato in sorted(datos)))
+def order_weight(string: str) -> str:
+    """Orders a string of int according to their digits
+
+    Args:
+        string: str composed of int separated by blank space
+
+    Returns:
+       same string, with int ordered according to the sum of their digits
+
+    """
+    def digit_sum(number: str) -> int:  # Aux function for the sorting, calculates the sum of digits
+        return sum(int(digit) for digit in number)
+
+    datos = sorted(string.split(), key=lambda num: (digit_sum(num), num))
+    return " ".join(datos)  # String conversion for the list created
 
 
 
